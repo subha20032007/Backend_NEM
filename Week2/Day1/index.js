@@ -41,7 +41,7 @@ app.post("/appStudents",(req,res)=>{
 //     fs.writeFileSync("./db.json",JSON.stringify(newData))
 //     console.log(parse_data)
 //     res.send("delete successFul")
-// }) 7
+// }) 
 app.post("/students",(req,res)=>{
     const data=fs.db.json("./db.json","utf-8")
 const parse_data=JSON.parse(data)
