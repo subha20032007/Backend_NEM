@@ -1,14 +1,15 @@
-let sum=(a,b)=>{
-    return a+b
+
+const sum=(a,b)=>{
+    console.log(a+b)
 }
-let sub=(a,b)=>{
-    return a-b
+const sub=(a,b)=>{
+    console.log(a+b)
 }
-let mul=(a,b)=>{
-    return a*b
+const pro=(a,b)=>{
+    console.log(a+b)
 }
-let div=(a,b)=>{
-    return a/b
+const div=(a,b)=>{
+    console.log(a+b)
 }
 
-module.exports={sum,sub,mul,div}
+module.exports={sum,sub,pro,div}

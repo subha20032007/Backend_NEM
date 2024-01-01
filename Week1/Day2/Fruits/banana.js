@@ -1,4 +1,4 @@
 module.exports={
-name:"banana",
-colur:"yellow"
+    name:"banana",
+    color:"yellow"
 }

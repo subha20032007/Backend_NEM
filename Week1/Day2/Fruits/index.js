@@ -1,7 +1,5 @@
-const apple=require("./apple")
-const banana=require("./banana")
-const orange=require("./orange")
+let apple=require("./apple")
+let banana=require("./banana")
 
-let fruits=[apple,banana,orange]
-
+let fruits=[apple,banana]
 module.exports=fruits

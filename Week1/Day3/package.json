@@ -1,15 +1,5 @@
 {
-  "name": "day3",
-  "version": "1.0.0",
-  "description": "day 3 os and fs  module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "happy",
-  "license": "ISC",
   "dependencies": {
-    "git": "^0.1.5",
     "is-even": "^1.0.0"
   }
 }
