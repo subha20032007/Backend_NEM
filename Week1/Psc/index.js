@@ -7,14 +7,16 @@ const server=http.createServer((req,res)=>{
       res.setHeader("Content-type","text/html")
       res.end("<h1>WELCOME TO EMPOLYEE MANAGEMENT SYSTEM </h1>")
     }else if(req.url==="/writeinfile"){
-     fs.readFile("./emplote.txt",{encoding:"utf-8"},(err,data)=>{
-        if(err){
-            res.write("no employee Found")
-            res.end()
-        }else{
-           res.end(data)
-        }
+     fs.writeFile("./employe.txt","Employee name as Follow :",(err)=>{
+       if(err){
+        res.write("err")
+        res.end()
+       }else{
+        res.end("<h1>Data has been write in file</h1>")
+       }
      })
+    }else{
+        res.end("<h1>404 Page Not Found</h1>")
     }
 })
 
