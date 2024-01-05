@@ -1,77 +1,65 @@
 
 const express=require("express")
 const fs=require("fs")
-const app=express()
 
+const app=express()
 app.use(express.json())
 app.get("/",(req,res)=>{
-res.end("Hello world")
+    res.send("app is running")
 })
 
 app.get("/data",(req,res)=>{
-   const data=fs.readFileSync("./db.json","utf-8")
-   const parsed_data=JSON.parse(data)
-   console.log(parsed_data)
-   res.send("you got data in terminal")
-})
-
-app.get("/appStudents",(req,res)=>{
-    const data=fs.readFileSync("./db.json",{encoding:"utf-8"})
-const parse_data=JSON.parse(data)
-    console.log(parse_data.students)
-    console.log("all student in terminal")
-})
-
-app.post("/appStudents",(req,res)=>{
-    //read data First
-    const data=fs.readFileSync("./db.json","utf-8")
-    //parsing the data for add a new student
-     const parse_data=JSON.parse(data)
-    //add new student
-    parse_data.students.push(req.body)
-    //write file
-    fs.writeFileSync("./db.json",JSON.stringify(parse_data))
+    let data=fs.readFileSync("./db.json",{encoding:"utf-8"})
+    const parse_data=JSON.parse(data)
     console.log(parse_data)
-    res.send("data post is work")
+    res.send("data getting")
 })
-// app.delete("/appStudent",(req,res)=>{
-//     const data=fs.readFileSync("./db.json","utf-8")
-//     const parse_data=JSON.parse(data)
-//     const newData=parse_data.students.filter((el)=>req.body!==el.name)
-//     fs.writeFileSync("./db.json",JSON.stringify(newData))
-//     console.log(parse_data)
-//     res.send("delete successFul")
-// }) 
-app.post("/students",(req,res)=>{
-    const data=fs.db.json("./db.json","utf-8")
-const parse_data=JSON.parse(data)
-
-})
-app.listen("9090",()=>{
-    console.log("App run on server 9090")
+app.post("/data",(req,res)=>{
+    console.log(req.body)
+    res.send("data work")
 })
 
+app.get("/student",(req,res)=>{
+    const rawData=fs.readFileSync("./db.json","utf-8")
+    const data=JSON.parse(rawData)
+    console.log(data.student)
+    res.send("student data getting")
+})
 
+app.post("/student",(req,res)=>{
+    //read file
+    const rawData=fs.readFileSync("./db.json","utf-8")
+    //json to obj
+    const data=JSON.parse(rawData)
+    //add data to student
+    data.student.push(req.body)
+    //write the data in file 
+    fs.writeFileSync("./db.json",JSON.stringify(data))
+    res.send("student is added")
+    console.log(data.student)
+})
 
+app.post("/teacher",(req,res)=>{
+    let rawData=fs.readFileSync("./db.json","utf-8")
+    let data=JSON.parse(rawData)
+   data.teacher.push(req.body)
+   fs.writeFileSync("./db.json",JSON.stringify(data))
 
+ 
+    res.send("teacher data")
+    console.log(data.teacher)
+})
 
+app.delete("/teacher",(req,res)=>{
+    const rawData=fs.readFileSync("./db.json","utf-8")
+    const data=JSON.parse(rawData)
+    let newData=data.teacher.filter((el)=>el.name!==req.body.name)
+    console.log(newData)
+    // fs.writeFileSync("./db.json",JSON.stringify(newData))
+    res.send("i am the delete data")
+    // console.log(data.teacher)
 
-
-
-
-
-
-
-
-
-
-//------------------------------------------------------------------------------------------------------------------------
-// app.post("/add",(req,res)=>{
-//     console.log(req.body)
-//     res.end("app post")
-// })
-
-// app.put("/add",(req,res)=>{
-// console.log(req.body)
-//     res.end("it put data")
-// })
+})
+app.listen(2000,()=>{
+    console.log("app run port 2000")
+})
