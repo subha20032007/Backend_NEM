@@ -58,7 +58,7 @@ app.delete("/teacher",(req,res)=>{
     // fs.writeFileSync("./db.json",JSON.stringify(newData))
     res.send("i am the delete data")
     // console.log(data.teacher)
-
+//
 })
 app.listen(2000,()=>{
     console.log("app run port 2000")
