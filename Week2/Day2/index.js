@@ -1,37 +1,23 @@
 const express=require("express")
-const {timeLogger}=require("./middleware/timelogger.middleware")
-// const {watchMan}=require("./middleware/watchman.middleware")
 const fs=require("fs")
-const { logger } = require("./middleware/logger.middleware")
 const app=express()
-const port=9090
 
-app.use(timeLogger)
-// app.use(watchMan)
-app.use(logger)
-app.use(express.json())
 app.get("/",(req,res)=>{
-    console.log("home")
-    res.send("<h1>Home Page</h1>")
+    res.send("<h1>Home (:.:) Page</h1>")
 })
-app.post("/",(req,res)=>{
-    
-    res.send('data send')
-    console.log(req.body)
+app.get("/students",(req,res)=>{
+    res.send("<h1>Student Page</h1>")
 })
-app.get("/about",(req,res)=>{
-    console.log("about")
-    res.send("<h1>About Page</h2>")
+
+app.post("/addStudents",(req,res)=>{
+    res.send("<h1>Add students</h1>")
 })
-app.get("/contact",(req,res)=>{
-    console.log("contact")
-    res.send("<h1>contact Page</h1>")
+app.get("/teachers",(req,res)=>{
+    res.send("<h1>Teacher Page</h1>")
 })
-app.use(timeLogger)
-app.get("/data",(req,res)=>{
-const data=fs.readFileSync("dummy.html","utf-8")
-    res.send(data)
+app.post("addTeachers",(req,res)=>{
+    res.send("<h1>Add Teacher</h1>")
 })
-app.listen(port,()=>{
-    console.log(`app runing in the port ${port}`)
+app.listen(9090,()=>{
+    console.log("Port run in 9090")
 })

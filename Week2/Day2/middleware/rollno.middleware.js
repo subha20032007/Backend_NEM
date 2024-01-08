@@ -1,7 +1,9 @@
 const rollno=(req,res,next)=>{
-    if(req.method==="post"&&req.res==="/"){
-        req.body.rollno=Math.floor(math.random*10)
+    if(req.method==="POST"&&req.url==="/"){
+        req.body.rollno=Math.floor(Math.random()*10)
+        next()
+    }else{
         next()
     }
 }
-//1234567
+module.exports={rollno}
