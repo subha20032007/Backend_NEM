@@ -1,0 +1,14 @@
+routesGET url /data 
+routesGET url /contact 
+routesGET url /data 
+routesGET url /data 
+routesGET url /data 
+routesGET url /data 
+routesGET url /data 
+routesPOST url / 
+routesGET url / 
+routesPOST url / 
+routesGET url / 
+routesPOST url / 
+routesPOST url / 
+routesGET url / 
