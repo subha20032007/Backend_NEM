@@ -1,7 +1,7 @@
 const express=require("express")
 const studentRouter=express.Router()
 
-studentRouter.get("/students",(req,res)=>{
+studentRouter.get("/",(req,res)=>{
     res.send("<h1>Student Page</h1>")
 })
 

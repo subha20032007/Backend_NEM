@@ -2,7 +2,7 @@ const express=require("express")
 
 const teacherRouter=express.Router()
 
-teacherRouter.get("/teachers",(req,res)=>{
+teacherRouter.get("/",(req,res)=>{
     res.send("<h1>Teacher Page</h1>")
 })
 teacherRouter.post("addTeachers",(req,res)=>{
