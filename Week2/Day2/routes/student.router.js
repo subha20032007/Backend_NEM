@@ -8,3 +8,6 @@ studentRouter.get("/",(req,res)=>{
 studentRouter.post("/addStudents",(req,res)=>{
     res.send("<h1>Add students</h1>")
 })
+module.exports={
+    studentRouter
+}
