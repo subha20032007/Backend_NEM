@@ -21,7 +21,8 @@ app.get("/data",(req,res)=>{
 
 app.get("/student/:roll_no",(req,res)=>{
     const roll_no=req.params.roll_no
-    res.send(`<h1>This ${roll_no} rollno Student is Very Good</h1>`)
+    res.send(`<h1>This ${roll_no} rollno Student is Very Good</h1>`
+    )
 })
 
 app.listen(9090,()=>{
