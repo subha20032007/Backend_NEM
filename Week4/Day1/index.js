@@ -3,6 +3,7 @@ const { connection } = require("./config/db")
 const { Usermodel } = require("./model/User.model")
 const Port=9090
 const app=express()
+const jwt=require("jsonwebtoken")
 app.use(express.json())
 
 app.get("/",(req,res)=>{
@@ -36,9 +37,10 @@ app.post("/login",async(req,res)=>{
      try{
        const user=await Usermodel.find({email,pass})
        console.log(user)
-    
+       const token=jwt.sign({course:"backend"},"happy")
+       
        if(user.length>0){
-        res.send("login done")
+        res.send({"msg":"Login success full",token})
       
        }else{
      
@@ -48,8 +50,22 @@ app.post("/login",async(req,res)=>{
         console.log(err)
         res.send({"err":"something went wrong"})
     }
-
-   
+})
+app.get("/data",(req,res)=>{
+    const token=req.query.token
+    if(token==="jaga123"){
+    res.send("data .....")
+    }else{
+        res.send("login first")
+    }
+})
+app.get("/cart",(req,res)=>{
+    const token=req.query.token
+    if(token==="jaga123"){
+    res.send("cart ......")
+}else{
+    res.send("login first")
+}
 })
 app.listen(Port,async()=>{
     try{
