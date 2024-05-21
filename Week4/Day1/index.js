@@ -4,6 +4,7 @@ const { Usermodel } = require("./model/User.model")
 const Port=9090
 const app=express()
 const jwt=require("jsonwebtoken")
+const { decode } = require("punycode")
 app.use(express.json())
 
 app.get("/",(req,res)=>{
@@ -37,7 +38,7 @@ app.post("/login",async(req,res)=>{
      try{
        const user=await Usermodel.find({email,pass})
        console.log(user)
-       const token=jwt.sign({course:"backend"},"happy")
+       const token=jwt.sign({"course":"nem"},"happy")
        
        if(user.length>0){
         res.send({"msg":"Login success full",token})
@@ -52,12 +53,15 @@ app.post("/login",async(req,res)=>{
     }
 })
 app.get("/data",(req,res)=>{
-    const token=req.query.token
-    if(token==="jaga123"){
-    res.send("data .....")
-    }else{
-        res.send("login first")
-    }
+    const token=req.headers.authorization
+    console.log(token)
+   jwt.verify(token,"happy",(err,decode)=>{
+       if(err){
+        res.send("Invalid Token")
+       }else{
+        res.send("<h1>DATA PAGE........</h1>")
+       }
+   })
 })
 app.get("/cart",(req,res)=>{
     const token=req.query.token
