@@ -13,3 +13,4 @@ fs.writeFile("happy.txt","happy is a devloper",()=>{
     })
 })
 console.log("end")
+//1
